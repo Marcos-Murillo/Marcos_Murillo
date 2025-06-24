@@ -20,7 +20,7 @@ export const MainMenusGradientCard = ({
   children?: ReactNode
   className?: string
 }) => {
-  const [mouse, parentRef] = useMouse()
+  const [mouse, parentRef] = useMouse<HTMLDivElement>()
 
   return (
     <div

@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useRef, useState } from "react"
 
 export interface MousePosition {
@@ -13,7 +12,7 @@ export interface MousePosition {
   elementPositionY: number | null
 }
 
-export function useMouse(): [MousePosition, React.RefObject<HTMLElement>] {
+export function useMouse<T extends HTMLElement = HTMLDivElement>(): [MousePosition, React.RefObject<T>] {
   const [mouse, setMouse] = useState<MousePosition>({
     x: 0,
     y: 0,
@@ -23,7 +22,7 @@ export function useMouse(): [MousePosition, React.RefObject<HTMLElement>] {
     elementPositionY: null,
   })
 
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<T>(null)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
